@@ -32,22 +32,22 @@
 						<div sec:authorize="isAuthenticated()">
 							<div th:unless="${success}">
 								<a th:href="@{/houses/__${house.getId()}__/create}"
-									onclick="event.preventDefault(); document.getElementById('favoriteAddForm').submit();">&#9825　お気に入り追加</a>
-								<form id="favoriteAddForm" style="display: none;" method="post"
+									onclick="event.preventDefault(); document.getElementById('favoriteRegisterForm').submit();">&#9825　お気に入り追加</a>
+								<form id="favoriteRegisterForm" style="display: none;" method="post"
 									th:action="@{/houses/__${house.getId()}__/create}"
 									th:object="${favoriteRegisterForm}">
-									<input type="hidden" name="houseId" th:value="${house.getId()}">
-									<input type="hidden" name="userId" th:value="${user.id}">
+									<input type="hidden" name="houseId" th:field="*{houseId}">
+								<input type="hidden" name="userId" th:field="*{userId}">
 									<button type="submit">&#9825　お気に入り追加</button>
 								</form>
 							</div>
 							<div th:if="${success}">
 								<a th:href="@{/houses/__${house.getId()}__/delete}"
-									onclick="event.preventDefault(); document.getElementById('favoriteDeleteForm').submit();">&#9829　お気に入り解除</a>
-								<form id="favoriteDeleteForm" style="display: none;" method="post"
+									onclick="event.preventDefault(); document.getElementById('favoriteRegisterForm').submit();">&#9829　お気に入り解除</a>
+								<form id="favoriteRegisterForm" style="display: none;" method="post"
 									th:action="@{/houses/__${house.getId()}__/delete}">
-									<input type="hidden" name="houseId" th:value="${house.getId()}">
-									<input type="hidden" name="userId" th:value="${user.id}">
+									<input type="hidden" name="houseId" th:field="*{houseId}">
+								<input type="hidden" name="userId" th:field="*{userId}">
 									<button type="submit">&#9829　お気に入り解除</button>
 								</form>
 							</div>
